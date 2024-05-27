@@ -8,7 +8,6 @@
     }
 }
 
-
 @layer theme {
     :root {
         --layout-fluid-min: 35ch;
@@ -92,9 +91,35 @@
 
     .subgrid-cols {
         display: flex;
+        overflow: hidden;
         gap: var(--subgrid-gap, 0);
         > * {
             flex: 1;
+        }
+    }
+}
+
+
+@layer demo {
+    .demo .products-grid  * {
+        aspect-ratio: 2 / 1;
+        border: 1px dashed black;
+        padding: 2px
+    }
+
+    .demo .products-grid {
+        --grid-repeat: 4;
+        --grid-gap: 2vw;
+        --subgrid-gap: 5px;
+
+        @media (width <= 1000px) {
+            --grid-repeat: 3;
+            --grid-gap: 3vw;
+        }
+
+        @media (width <= 800px) {
+            --grid-repeat: 2;
+            --grid-gap: 4vw;
         }
     }
 
